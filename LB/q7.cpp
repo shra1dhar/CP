@@ -27,13 +27,20 @@ int main()
   getInputs(v, n);
 
   int temp;
-  for (int i = 0; i < n; i++)
+  if (v.size())
   {
-    if (i == n - 1)
-    {
-      swap(v[i], v)
-    }
-    int temp =
+    temp = v[0];
   }
+
+  for (int i = 1; i < n; i++)
+  {
+    swap(temp, v[i]);
+  }
+
+  if (v.size() > 1)
+  {
+    swap(temp, v[0]);
+  }
+  printList(v);
   return 0;
 }
