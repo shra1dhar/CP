@@ -20,7 +20,6 @@ int maxSum(vector<int> &v, int n)
     {
       sum += v[j];
     }
-
     if (resultant < sum)
     {
       resultant = sum;
