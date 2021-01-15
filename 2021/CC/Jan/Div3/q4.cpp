@@ -10,11 +10,11 @@ pair<long int, long int> getBackwardsExtrapolatedPoints(long int x, long int y)
 {
   if (isClockwiseDirectiton)
   {
-    return make_pair(0, abs(x - y));
+    return make_pair((long int)0, abs(x - y));
   }
   else
   {
-    make_pair(abs(y - x), 0);
+    return make_pair(abs(y - x), (long int)0);
   }
 }
 
@@ -40,12 +40,13 @@ int main()
     }
 
     bool isClockwise = isClockwiseDirectiton(x, y);
-    pair<int, int> points = getBackwardsExtrapolatedPoints(x, y);
+    pair<long int, long int> points = getBackwardsExtrapolatedPoints(x, y);
 
     // one of them is zero rn
     long int distance = max(points.first, points.second);
     long int remDistance = N - distance;
-    long int collisions = K <= 4 ? K : K % 4;
+    int totalCorners = 4;
+    long int collisions = K <= totalCorners ? K : (K % totalCorners == 0) ? totalCorners : K % 4;
     long int finalX, finalY;
 
     switch (collisions)
