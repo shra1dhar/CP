@@ -3,6 +3,7 @@
     "*.jsx": "JavaScript React",
     "*.js": "javascriptreact",
     "iostream": "cpp",
-    "ostream": "cpp"
+    "ostream": "cpp",
+    "functional": "cpp"
   }
 }
