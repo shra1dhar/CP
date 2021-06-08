@@ -21,15 +21,23 @@ int main()
 
     while (T--)
     {
-        int D, d, P, Q;
+        unsigned long long D, d, P, Q;
         cin >> D >> d >> P >> Q;
 
-        int n = floor(D / d);
-        int remDays = D % d;
+        unsigned long long n = D / d;
+        unsigned long long remDays = D % d;
+        unsigned long long total = 0;
 
-        int firstHalf = (d * (n) * (2 * P + (n - 1) * Q)) / 2;
-        int secondHalf = remDays * (P + (n)*Q);
-        int total = firstHalf + secondHalf;
+        if (n % 2 == 0)
+        {
+            total = (d * n * (2 * P + (n - 1) * Q)) / 2;
+        }
+        else
+        {
+            total = d * (n * (P + ((n - 1) / 2) * Q));
+        }
+
+        total += remDays * (P + (n * Q));
         cout << total << endl;
     }
     return 0;
