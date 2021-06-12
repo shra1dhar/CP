@@ -14,20 +14,44 @@
 #include <utility>
 using namespace std;
 
-int arithmaticSum(int a, int n, int d) {
-    return n * (2*a + (n-1)*d) * 0.5;
+long long fastPower(long long base, long long power)
+{
+    const unsigned int MOD = 1e9 + 7;
+
+    if (power == 0)
+    {
+        return 1;
+    }
+
+    if (base == 0)
+    {
+        return 0;
+    }
+
+    long long temp = fastPower(base, power / 2);
+
+    if (power & 1)
+    {
+        return temp * temp * base % MOD;
+    }
+    else
+    {
+        return temp * temp % MOD;
+    }
 }
 
-int main() {
+int main()
+{
     int T;
     cin >> T;
-    const unsigned int MOD = 1e9 + 7;
-    while (T--) {
-        int N, M;
+
+    while (T--)
+    {
+        long long N, M;
         cin >> N >> M;
-        
-        
-        
+
+        long long base = fastPower(2, N) - 1;
+        cout << fastPower(base, M) << endl;
     }
     return 0;
 }
