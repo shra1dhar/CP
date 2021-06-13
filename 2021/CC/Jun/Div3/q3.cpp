@@ -14,7 +14,7 @@
 #include <utility>
 using namespace std;
 
-long long fastPower(long long base, long long power)
+unsigned long long fastPower(long long base, long long power)
 {
     const unsigned int MOD = 1e9 + 7;
 
@@ -23,20 +23,15 @@ long long fastPower(long long base, long long power)
         return 1;
     }
 
-    if (base == 0)
-    {
-        return 0;
-    }
-
-    long long temp = fastPower(base, power / 2);
-
+    unsigned long long temp = fastPower(base, power / 2);
+    unsigned long long moddedSquare = (temp * temp) % MOD;
     if (power & 1)
     {
-        return temp * temp * base % MOD;
+        return moddedSquare * (base % MOD);
     }
     else
     {
-        return temp * temp % MOD;
+        return moddedSquare;
     }
 }
 
@@ -47,10 +42,10 @@ int main()
 
     while (T--)
     {
-        long long N, M;
+        unsigned long long N, M;
         cin >> N >> M;
 
-        long long base = fastPower(2, N) - 1;
+        unsigned long long base = fastPower(2, N) - 1;
         cout << fastPower(base, M) << endl;
     }
     return 0;
